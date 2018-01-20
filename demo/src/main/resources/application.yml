@@ -1,11 +1,13 @@
 spring:
     jpa:
         database: MYSQL
+        format-sql: true
         hibernate:
             ddl-auto: create
+            dialect: org.hibernate.dialect.MySQL5Dialect
 
     datasource:
-        url: jdbc:mysql://mysql:3306/demo
+        url: jdbc:mysql://127.0.0.1:3306/clinicdb
         username: root
         password: teleri
         driver-class-name: com.mysql.jdbc.Driver

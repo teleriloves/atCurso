@@ -1,4 +1,4 @@
-package model;
+package com.example.demo.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,5 +24,31 @@ public class User
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	List<Film> films = new ArrayList<Film>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Film> getFilms() {
+		return films;
+	}
+
+	public void setFilms(List<Film> films) {
+		this.films = films;
+	}
+	
+	
 	
 }

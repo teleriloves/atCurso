@@ -1,14 +1,11 @@
 package com.example.demo.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Appointment {
@@ -17,14 +14,14 @@ public class Appointment {
 	@GeneratedValue
 	private Integer id;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Patient patient;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private MedicalConsultation medicalconsultation;
 	
-	@GeneratedValue//(generated o strategy)
-	private Integer order;
+	@GeneratedValue
+	private Integer sworder;
 
 	public Integer getId() {
 		return id;
@@ -51,11 +48,11 @@ public class Appointment {
 	}
 
 	public Integer getOrder() {
-		return order;
+		return sworder;
 	}
 
 	public void setOrder(Integer order) {
-		this.order = order;
+		this.sworder = order;
 	}
 	
 	

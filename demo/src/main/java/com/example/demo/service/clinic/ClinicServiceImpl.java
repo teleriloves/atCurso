@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.ClinicDao;
 import com.example.demo.dto.ClinicDTO;
@@ -12,6 +13,7 @@ import com.example.demo.dto.PatientDTO;
 import com.example.demo.model.Clinic;
 import com.example.demo.model.Patient;
 
+@Service
 public class ClinicServiceImpl implements ClinicService{
 
 	@Autowired

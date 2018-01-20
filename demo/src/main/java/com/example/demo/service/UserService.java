@@ -21,6 +21,4 @@ public interface UserService {
 	
 	public UserDTO map(User user);
 
-	
-
 }

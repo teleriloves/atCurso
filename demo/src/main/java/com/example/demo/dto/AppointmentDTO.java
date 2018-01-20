@@ -15,6 +15,40 @@ public class AppointmentDTO {
 	
 	private MedicalConsultation medicalconsultation;
 	
-	private Integer order;
+	private Integer sworder;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public MedicalConsultation getMedicalconsultation() {
+		return medicalconsultation;
+	}
+
+	public void setMedicalconsultation(MedicalConsultation medicalconsultation) {
+		this.medicalconsultation = medicalconsultation;
+	}
+
+	public Integer getSworder() {
+		return sworder;
+	}
+
+	public void setSworder(Integer order) {
+		this.sworder = order;
+	}
+	
+	
 
 }

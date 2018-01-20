@@ -81,6 +81,7 @@ public class MedicalConsultation {
 		this.fecha = fecha;
 	}
 
+	//SI
 	public Switch getDocswitch() {
 		return docswitch;
 	}

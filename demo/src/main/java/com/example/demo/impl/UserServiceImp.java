@@ -25,7 +25,7 @@ public class UserServiceImp implements UserService {
 
 	@Override
 	public List<User> findAll() {
-		return null; //dao.findAll(new PageRequest(page, size).getContent());
+		return null; 
 	}
 
 	@Override

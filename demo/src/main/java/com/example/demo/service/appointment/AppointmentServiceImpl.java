@@ -2,6 +2,7 @@ package com.example.demo.service.appointment;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.AppointmentDao;
 import com.example.demo.dao.AppointmentDao;
 import com.example.demo.dto.AppointmentDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.model.Appointment;
 import com.example.demo.model.Appointment;
@@ -26,9 +28,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 
 	@Override
-	public AppointmentDTO findById(Integer id) {
-		final Appointment p = appointmentDao.findOne(id);
-		return map(p);
+	public AppointmentDTO findById(Integer id) throws NotFoundExcept {
+		final Appointment a = Optional.ofNullable(appointmentDao.findOne(id)).orElseThrow(() -> new NotFoundExcept());
+		return map(a);
 	}
 
 	@Override

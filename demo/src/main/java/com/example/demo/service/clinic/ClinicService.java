@@ -3,11 +3,12 @@ package com.example.demo.service.clinic;
 import java.util.List;
 
 import com.example.demo.dto.ClinicDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Clinic;
 
 public interface ClinicService {
 	
-	ClinicDTO findById(Integer id);
+	ClinicDTO findById(Integer id) throws NotFoundExcept;
 
 	List<ClinicDTO> findAll();
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.AppointmentDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.service.appointment.AppointmentService;
 
 @RestController
@@ -26,7 +27,7 @@ public class AppointmentController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public AppointmentDTO findOne(@PathVariable("id") Integer id)
+	public AppointmentDTO findOne(@PathVariable("id") Integer id) throws NotFoundExcept
 	{
 		return appointmentService.findById(id);
 	}

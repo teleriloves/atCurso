@@ -3,11 +3,12 @@ package com.example.demo.service.room;
 import java.util.List;
 
 import com.example.demo.dto.RoomDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Room;
 
 public interface RoomService {
 	
-	RoomDTO findById(Integer id);
+	RoomDTO findById(Integer id) throws NotFoundExcept;
 
 	List<RoomDTO> findAll();
 

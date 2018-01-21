@@ -2,6 +2,7 @@ package com.example.demo.service.room;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.RoomDao;
 import com.example.demo.dto.RoomDTO;
+import com.example.demo.exceptions.NotFoundExcept;
+import com.example.demo.model.Room;
 import com.example.demo.model.Room;
 
 @Service
@@ -21,8 +24,8 @@ public class RoomServiceImpl implements RoomService {
 	private DozerBeanMapper dozer;
 
 	@Override
-	public RoomDTO findById(Integer id) {
-		final Room r = roomDao.findOne(id);
+	public RoomDTO findById(Integer id) throws NotFoundExcept {
+		final Room r = Optional.ofNullable(roomDao.findOne(id)).orElseThrow(() -> new NotFoundExcept());
 		return map(r);
 	}
 

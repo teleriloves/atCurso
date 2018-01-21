@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.RoomDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.service.room.RoomService;
 
 
@@ -28,7 +29,7 @@ public class RoomController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public RoomDTO findOne(@PathVariable("id") Integer id)
+	public RoomDTO findOne(@PathVariable("id") Integer id) throws NotFoundExcept
 	{
 		return roomService.findById(id);
 	}

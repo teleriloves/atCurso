@@ -2,6 +2,7 @@ package com.example.demo.service.clinic;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.ClinicDao;
 import com.example.demo.dto.ClinicDTO;
 import com.example.demo.dto.PatientDTO;
+import com.example.demo.exceptions.NotFoundExcept;
+import com.example.demo.model.Clinic;
 import com.example.demo.model.Clinic;
 import com.example.demo.model.Patient;
 
@@ -18,13 +21,13 @@ public class ClinicServiceImpl implements ClinicService{
 
 	@Autowired
 	private ClinicDao clinicDao;
-	
+	 
 	@Autowired
 	private DozerBeanMapper dozer;
 
 	@Override
-	public ClinicDTO findById(Integer id) {
-		final Clinic c = clinicDao.findOne(id);
+	public ClinicDTO findById(Integer id) throws NotFoundExcept {
+		final Clinic c = Optional.ofNullable(clinicDao.findOne(id)).orElseThrow(() -> new NotFoundExcept());
 		return map(c);
 	}
 

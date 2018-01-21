@@ -6,12 +6,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.dto.UserDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Patient;
 
 
 public interface PatientService {
 	
-	PatientDTO findById(Integer id);
+	PatientDTO findById(Integer id) throws NotFoundExcept;
 
 	List<PatientDTO> findAll();
 

@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Appointment;
 
 
 public interface AppointmentService {
 	
-	AppointmentDTO findById(Integer id);
+	AppointmentDTO findById(Integer id) throws NotFoundExcept;
 
 	List<AppointmentDTO> findAll();
 

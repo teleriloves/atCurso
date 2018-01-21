@@ -10,27 +10,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.PatientDTO;
+import com.example.demo.dto.PatientDTO;
+import com.example.demo.service.patient.PatientService;
 import com.example.demo.service.patient.PatientService;
 
 @RestController
-@RequestMapping(value = "/patient")
+@RequestMapping(value = "api/patient")
 public class PatientController {
-/*
+
 	@Autowired
 	private PatientService patientService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<PatientDTO> getAll()
+	public List<PatientDTO> retrieveAll()
 	{
 		return patientService.findAll();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public PatientDTO findOne(@PathVariable("id") Integer id)
 	{
 		return patientService.findById(id);
 	}
-	
+		
 	@RequestMapping(method = { RequestMethod.POST })
 	public PatientDTO create(@RequestBody PatientDTO patient) 
 	{
@@ -48,5 +50,5 @@ public class PatientController {
 	{
 		patientService.delete(id);
 	}
-*/
+	
 }

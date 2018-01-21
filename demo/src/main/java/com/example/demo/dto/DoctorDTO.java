@@ -4,6 +4,10 @@ public class DoctorDTO {
 
 	private Integer id;
 	
+	private String name;
+	
+	private String dni;	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -28,8 +32,12 @@ public class DoctorDTO {
 		this.dni = dni;
 	}
 
-	private String name;
+	public DoctorDTO(Integer id, String name, String dni) {
+		this.id=id;
+		this.name=name;
+		this.dni = dni;
+	}
 	
-	private String dni;	
+	
 	
 }

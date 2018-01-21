@@ -15,24 +15,24 @@ import com.example.demo.service.room.RoomService;
 
 
 @RestController
-@RequestMapping(value = "/room")
+@RequestMapping(value = "api/room")
 public class RoomController {
 
 	@Autowired
 	private RoomService roomService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<RoomDTO> getAll()
+	public List<RoomDTO> retrieveAll()
 	{
 		return roomService.findAll();
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public RoomDTO findOne(@PathVariable("id") Integer id)
 	{
 		return roomService.findById(id);
 	}
-	
+		
 	@RequestMapping(method = { RequestMethod.POST })
 	public RoomDTO create(@RequestBody RoomDTO room) 
 	{

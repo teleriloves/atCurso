@@ -15,6 +15,7 @@ public interface MedicalConsultationService {
 	MedicalConsultationDTO create(MedicalConsultationDTO medicalConsultationDTO);
 
 	void update(Integer id, MedicalConsultationDTO medicalConsultationDTO);
+	//
 
 	void delete(Integer idMedicalConsultation);
 	

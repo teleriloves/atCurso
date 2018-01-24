@@ -14,7 +14,7 @@ public interface DoctorService {
 
 	DoctorDTO create(DoctorDTO doctorDTO);
 
-	void update(DoctorDTO doctorDTO);
+	void update(Integer id, DoctorDTO doctorDTO);
 
 	void delete(Integer idDoctor);
 	

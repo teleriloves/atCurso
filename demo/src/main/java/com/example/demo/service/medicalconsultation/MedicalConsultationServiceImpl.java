@@ -44,8 +44,9 @@ public class MedicalConsultationServiceImpl implements MedicalConsultationServic
 	}
 
 	@Override
-	public void update(MedicalConsultationDTO medicalConsultationDTO) {
+	public void update(Integer id, MedicalConsultationDTO medicalConsultationDTO) {
 		final MedicalConsultation mc = map(medicalConsultationDTO);
+		mc.setId(id);
 		medicalConsultationDao.save(mc);
 	}
 

@@ -11,10 +11,6 @@ public class AppointmentDTO {
 	
 	private Integer id;
 	
-	private Patient patient;
-	
-	private MedicalConsultation medicalconsultation;
-	
 	private Integer sworder;
 
 	public Integer getId() {
@@ -23,22 +19,6 @@ public class AppointmentDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
-
-	public MedicalConsultation getMedicalconsultation() {
-		return medicalconsultation;
-	}
-
-	public void setMedicalconsultation(MedicalConsultation medicalconsultation) {
-		this.medicalconsultation = medicalconsultation;
 	}
 
 	public Integer getSworder() {

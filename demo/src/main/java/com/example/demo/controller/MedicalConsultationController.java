@@ -41,7 +41,7 @@ public class MedicalConsultationController {
 	@RequestMapping(value = "/{id}", method = { RequestMethod.PUT })
 	public void update(@PathVariable("id") Integer id, @RequestBody MedicalConsultationDTO medicalConsultation) 
 	{	
-		medicalConsultationService.update(medicalConsultation);
+		medicalConsultationService.update(id,medicalConsultation);
 	}
 
 	@RequestMapping(value = "/{id}", method = { RequestMethod.DELETE })

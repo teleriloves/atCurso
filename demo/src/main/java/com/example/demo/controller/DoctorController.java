@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.DoctorDTO;
+import com.example.demo.dto.MedicalConsultationDTO;
 import com.example.demo.exceptions.NotFoundExcept;
+import com.example.demo.model.MedicalConsultation;
 import com.example.demo.service.doctor.DoctorService;
 
 @RestController
@@ -41,7 +43,7 @@ public class DoctorController {
 	@RequestMapping(value = "/{id}", method = { RequestMethod.PUT })
 	public void update(@PathVariable("id") Integer id, @RequestBody DoctorDTO doctor) 
 	{	
-		doctorService.update(doctor);
+		doctorService.update(id,doctor);
 	}
 
 	@RequestMapping(value = "/{id}", method = { RequestMethod.DELETE })

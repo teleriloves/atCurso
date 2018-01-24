@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.dto.PatientDTO;
+import com.example.demo.service.appointment.AppointmentService;
 import com.example.demo.service.patient.PatientService;
 import com.example.demo.service.patient.PatientService;
 
@@ -21,6 +23,17 @@ public class PatientController {
 
 	@Autowired
 	private PatientService patientService;
+	
+	@Autowired
+	private AppointmentService appointmentService;
+	
+//	
+//	@RequestMapping(method = RequestMethod.GET, value = "/{id}/appointment")
+//	public List<AppointmentDTO> retrieveAppointment(@PathVariable("id") Integer id)
+//	{
+//		return appointmentService.findById(id);
+//	}
+//	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<PatientDTO> retrieveAll()

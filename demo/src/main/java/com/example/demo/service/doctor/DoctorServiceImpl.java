@@ -44,8 +44,9 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 
 	@Override
-	public void update(DoctorDTO doctorDTO) {
+	public void update(Integer id, DoctorDTO doctorDTO) {
 		final Doctor d = map(doctorDTO);
+		d.setId(id);
 		doctorDao.save(d);
 	}
 

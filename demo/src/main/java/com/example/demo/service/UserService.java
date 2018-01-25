@@ -15,10 +15,12 @@ public interface UserService {
 
 	void update(User u, Integer idUser);
 
-	void delete(User u, Integer idUser);
+	void delete(Integer idUser);
 	
 	public User map(UserDTO user);
 	
 	public UserDTO map(User user);
+
+	void delete(User u, Integer idUser);
 
 }

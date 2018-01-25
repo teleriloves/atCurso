@@ -45,8 +45,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserDTO map(User user) {
-		// TODO Auto-generated method stub
+		
 		return null;
+	}
+
+	@Override
+	public void delete(Integer idUser) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

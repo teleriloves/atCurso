@@ -28,6 +28,9 @@ public class DoctorServiceImpl implements DoctorService {
 		final Doctor d = Optional.ofNullable(doctorDao.findOne(id)).orElseThrow(() -> new NotFoundExcept());
 		return map(d);
 	}
+	
+	
+	
 
 	@Override
 	public List<DoctorDTO> findAll() {

@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,14 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-
+/*
 
 @RestController
 @RequestMapping(value = "/api/user")
 public class UserController {
-	/*
+
 	@Autowired
 	private UserService userService;
 	
@@ -47,10 +49,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value = "/{idUser}")
-	public void delete(@RequestBody User u, @PathVariable Integer idUser)
+	public void delete(@PathVariable Integer idUser)
 	{
-		userService.delete(u, idUser);
+		userService.delete(idUser);
 	}
+	
+	
 
-*/
 }
+*/

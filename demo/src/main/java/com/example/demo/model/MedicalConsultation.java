@@ -23,7 +23,6 @@ import javax.persistence.TemporalType;
 public class MedicalConsultation {
 	
 	@Id
-	@GeneratedValue
 	private Integer id;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalconsultation")
@@ -35,8 +34,7 @@ public class MedicalConsultation {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Room room;
 	
-	@Temporal(value = TemporalType.DATE)
-	private Date fecha;
+	private String fecha;
 	
 	@Enumerated(EnumType.STRING)
 	private Switch docswitch;
@@ -73,11 +71,11 @@ public class MedicalConsultation {
 		this.room = room;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

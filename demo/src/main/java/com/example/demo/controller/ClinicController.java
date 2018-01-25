@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.ClinicDTO;
+import com.example.demo.dto.DoctorDTO;
+import com.example.demo.dto.PatientDTO;
+import com.example.demo.dto.RoomDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.service.clinic.ClinicService;
 
@@ -48,6 +51,24 @@ public class ClinicController {
 	public void delete(@PathVariable("id") Integer id) 
 	{
 		clinicService.delete(id);
+	}
+	
+	@RequestMapping(value = "/{id}/room")
+	public List<RoomDTO> findClinicRooms(@PathVariable Integer id)
+	{
+		return clinicService.findClinicRooms(id);
+	}
+	
+	@RequestMapping(value = "/{id}/patient")
+	public List<PatientDTO> findClinicPatients(@PathVariable Integer id)
+	{
+		return clinicService.findClinicPatients(id);
+	}
+	
+	@RequestMapping(value = "/{id}/doctor")
+	public List<DoctorDTO> findClinicDoctors(@PathVariable Integer id)
+	{
+		return clinicService.findClinicDoctors(id);
 	}
 	
 }

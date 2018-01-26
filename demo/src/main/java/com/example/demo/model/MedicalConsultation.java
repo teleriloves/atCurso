@@ -26,7 +26,7 @@ public class MedicalConsultation {
 	private Integer id;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "medicalconsultation")
-	private List<Appointment> consultations = new ArrayList<Appointment>();
+	private List<Appointment> appointments = new ArrayList<Appointment>();
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Doctor doctor;
@@ -46,18 +46,20 @@ public class MedicalConsultation {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
 
-	public List<Appointment> getConsultations() {
-		return consultations;
+	public List<Appointment> getAppointments() {
+		return appointments;
 	}
 
-	public void setConsultations(List<Appointment> consultations) {
-		this.consultations = consultations;
+	public void setAppointments(List<Appointment> consultations) {
+		this.appointments = consultations;
 	}
 
 	public Doctor getDoctor() {
 		return doctor;
 	}
+	
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;

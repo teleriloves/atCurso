@@ -108,7 +108,7 @@ public class ClinicServiceImpl implements ClinicService{
 	public List<PatientDTO> findClinicPatients(Integer idClinic) {
 		Clinic clinic = clinicDao.findOne(idClinic);
 		List<PatientDTO> clinicPatients = new ArrayList<PatientDTO>();
-		clinic.getRooms().forEach(r -> r.getConsultations().forEach(a -> a.getConsultations().forEach(p -> clinicPatients.add(patientService.map(p.getPatient())))));
+		clinic.getRooms().forEach(r -> r.getConsultations().forEach(a -> a.getAppointments().forEach(p -> clinicPatients.add(patientService.map(p.getPatient())))));
 		return clinicPatients;
 	}
 	

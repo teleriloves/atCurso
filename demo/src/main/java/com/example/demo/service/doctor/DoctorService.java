@@ -2,7 +2,9 @@ package com.example.demo.service.doctor;
 
 import java.util.List;
 
+import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.DoctorDTO;
+import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Doctor;
 
@@ -21,5 +23,10 @@ public interface DoctorService {
 	public Doctor map(DoctorDTO doctor);
 	
 	public DoctorDTO map(Doctor doctor);
+	
+	public List<PatientDTO> findDoctorPatients(Integer idDoctor);
+	
+	public List<AppointmentDTO> findDoctorAppointments(Integer idDoctor);
+	
 
 }

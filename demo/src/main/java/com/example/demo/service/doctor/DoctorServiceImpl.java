@@ -9,9 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.DoctorDao;
+import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.DoctorDTO;
+import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Doctor;
+import com.example.demo.service.appointment.AppointmentService;
+import com.example.demo.service.patient.PatientService;
 import com.example.demo.model.Doctor;
 
 @Service
@@ -19,6 +23,12 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Autowired
 	private DoctorDao doctorDao;
+	
+	@Autowired
+	private PatientService patientService;
+	
+	@Autowired
+	private AppointmentService appointmentService;
 	
 	@Autowired
 	private DozerBeanMapper dozer;
@@ -29,9 +39,7 @@ public class DoctorServiceImpl implements DoctorService {
 		return map(d);
 	}
 	
-	
-	
-
+	//meter el tamaño de pagina y tamaño en general
 	@Override
 	public List<DoctorDTO> findAll() {
 		final Iterable<Doctor> findAll = doctorDao.findAll();
@@ -66,6 +74,23 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public DoctorDTO map(Doctor doctor) {
 		return dozer.map(doctor, DoctorDTO.class);
+	}
+
+	@Override
+	public List<PatientDTO> findDoctorPatients(Integer idDoctor) {
+		Doctor doctor = doctorDao.findById(idDoctor);
+		List<PatientDTO> doctorPatients = new ArrayList<PatientDTO>();
+		doctor.getConsultations().forEach(mc -> mc.getAppointments().forEach(p -> doctorPatients.add(patientService.map(p.getPatient()))));
+		return doctorPatients;		
+	}
+
+	@Override
+	public List<AppointmentDTO> findDoctorAppointments(Integer idDoctor) {
+		Doctor doctor = doctorDao.findById(idDoctor);
+		List<AppointmentDTO> doctorAppointments = new ArrayList<AppointmentDTO>();
+		doctor.getConsultations().forEach(mc -> mc.getAppointments().forEach(a -> doctorAppointments.add(appointmentService.map(a))));
+		return doctorAppointments;
+		
 	}
 
 }

@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.PatientDao;
+import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Patient;
+import com.example.demo.service.appointment.AppointmentService;
 import com.example.demo.model.Patient;
 
 @Service
@@ -19,6 +21,9 @@ public class PatientServiceImpl implements PatientService {
 	
 	@Autowired
 	private PatientDao patientDao;
+	
+	@Autowired
+	private AppointmentService appointmentService;
 	
 	@Autowired
 	private DozerBeanMapper dozer;
@@ -62,6 +67,14 @@ public class PatientServiceImpl implements PatientService {
 	@Override
 	public PatientDTO map(Patient patient) {
 		return dozer.map(patient, PatientDTO.class);
+	}
+
+	@Override
+	public List<AppointmentDTO> findPatientAppointments(Integer idPatient) {
+		Patient patient = patientDao.findById(idPatient);
+		List<AppointmentDTO> patientAppointments = new ArrayList<AppointmentDTO>();
+		patient.getAppointments().forEach(a -> patientAppointments.add(appointmentService.map(a)));
+		return patientAppointments;
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.example.demo.dto.DoctorDTO;
 import com.example.demo.dto.MedicalConsultationDTO;
@@ -21,6 +22,9 @@ public class DoctorController {
 
 	@Autowired
 	private DoctorService doctorService;
+	
+	@Autowired
+    private RestTemplate restTemplate;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<DoctorDTO> retrieveAll()
@@ -52,4 +56,15 @@ public class DoctorController {
 		doctorService.delete(id);
 	}
 
+	
+	
+	
+	public void retrieveDoctorsFromExternalApp()
+	{
+		int i = 0;
+		DoctorDTO result = restTemplate.getForObject("http://doctor.dbgjerez.es:8080/api/doctor?page=" + i, DoctorDTO.class);
+		
+		
+	}
+	
 }

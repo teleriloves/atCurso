@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.exceptions.NotFoundExcept;
@@ -25,5 +26,7 @@ public interface PatientService {
 	public Patient map(PatientDTO patient);
 	
 	public PatientDTO map(Patient patient);
+	
+	public List<AppointmentDTO> findPatientAppointments(Integer idPatient);
 
 }

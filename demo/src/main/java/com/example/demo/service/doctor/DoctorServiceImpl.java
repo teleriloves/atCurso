@@ -57,7 +57,7 @@ public class DoctorServiceImpl implements DoctorService {
 	@Override
 	public void update(Integer id, DoctorDTO doctorDTO) {
 		final Doctor d = map(doctorDTO);
-		d.setId(id);
+		d.setIdDoc(id);
 		doctorDao.save(d);
 	}
 
@@ -68,12 +68,16 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Override
 	public Doctor map(DoctorDTO doctor) {
-		return dozer.map(doctor, Doctor.class);
+		return Optional.ofNullable(doctorDao.findOne(doctor.getId())).orElse(new Doctor(null, null, doctor.getName(), doctor.getDni(), new ArrayList<>()));
 	}
 
 	@Override
 	public DoctorDTO map(Doctor doctor) {
-		return dozer.map(doctor, DoctorDTO.class);
+		//return dozer.map(doctor, DoctorDTO.class);
+		DoctorDTO d = new DoctorDTO();
+		d.setId(d.getId());
+		d.setDni(d.getDni());
+		
 	}
 
 	@Override

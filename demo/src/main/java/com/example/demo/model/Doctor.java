@@ -3,23 +3,34 @@ package com.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Doctor {
 
+	
+	@GeneratedValue
+	private Integer idDoc;
+	
 	@Id
-	private Integer id;
+	private String id;
 	
 	private String name;
 	
 	private String dni;
-		
+
+
+	
 	public String getDni() {
 		return dni;
 	}
@@ -28,11 +39,19 @@ public class Doctor {
 		this.dni = dni;
 	}
 
-	public Integer getId() {
+	public Integer getIdDoc() {
+		return idDoc;
+	}
+
+	public void setIdDoc(Integer id) {
+		this.idDoc = id;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

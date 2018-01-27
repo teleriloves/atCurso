@@ -79,6 +79,10 @@ public class ClinicServiceImpl implements ClinicService{
 
 	@Override
 	public Clinic map(ClinicDTO clinic) {
+//		Clinic c = new Clinic();
+//		if(c == null) c = new Clinic();
+//		c.setRooms(c.getRooms());
+//		return c;
 		return dozer.map(clinic, Clinic.class);
 	}
 

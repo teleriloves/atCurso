@@ -76,5 +76,8 @@ public class PatientServiceImpl implements PatientService {
 		patient.getAppointments().forEach(a -> patientAppointments.add(appointmentService.map(a)));
 		return patientAppointments;
 	}
+	
+	
+	
 
 }

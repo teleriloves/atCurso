@@ -12,6 +12,7 @@ import com.example.demo.dto.DoctorDTO;
 @Configuration
 public class RestConfiguration {
 	
+	/*
     @Autowired
     private RestTemplate restTemplate;
 	
@@ -24,7 +25,12 @@ public class RestConfiguration {
         restTemplate.delete("localhost:PUERTO/doctor/1");
         
         return resultado;
-    }
+    }*/
+	
+	@Bean
+	public RestTemplate restTemplate() {
+	    return new RestTemplate();
+	}
 	
 
 }

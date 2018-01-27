@@ -6,8 +6,10 @@ import java.util.Optional;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.DoctorDao;
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.DoctorDTO;
@@ -40,8 +42,8 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 	
 	@Override
-	public List<DoctorDTO> findAll() {
-		final Iterable<Doctor> findAll = doctorDao.findAll();
+	public List<DoctorDTO> findAll(Integer page, Integer size) {
+		final Iterable<Doctor> findAll = doctorDao.findAll(PageReqConfig.newPageRequest(page, size));
 		final List<DoctorDTO> res = new ArrayList<>();
 		findAll.forEach(d -> {final DoctorDTO dDTO = map(d); res.add(dDTO);});
 		return res;

@@ -8,6 +8,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.ClinicDao;
 import com.example.demo.dto.ClinicDTO;
 import com.example.demo.dto.DoctorDTO;
@@ -51,7 +52,7 @@ public class ClinicServiceImpl implements ClinicService{
 	}
 
 	@Override
-	public List<ClinicDTO> findAll() {
+	public List<ClinicDTO> findAll(Integer page, Integer size) {
 		final Iterable<Clinic> findAll = clinicDao.findAll();
 		final List<ClinicDTO> res = new ArrayList<>();
 		

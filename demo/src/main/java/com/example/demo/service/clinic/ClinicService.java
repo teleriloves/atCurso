@@ -13,7 +13,7 @@ public interface ClinicService {
 	
 	public ClinicDTO findById(Integer id) throws NotFoundExcept;
 
-	 public List<ClinicDTO> findAll();
+	 public List<ClinicDTO> findAll(Integer page, Integer sizeS);
 
 	public ClinicDTO create(ClinicDTO clinicDTO);
 

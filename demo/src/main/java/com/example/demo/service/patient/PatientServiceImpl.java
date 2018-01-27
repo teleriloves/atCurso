@@ -8,6 +8,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.PatientDao;
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
@@ -35,8 +36,8 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public List<PatientDTO> findAll() {
-		final Iterable<Patient> findAll = patientDao.findAll();
+	public List<PatientDTO> findAll(Integer page, Integer size) {
+		final Iterable<Patient> findAll = patientDao.findAll(PageReqConfig.newPageRequest(page, size));
 		final List<PatientDTO> res = new ArrayList<>();
 		findAll.forEach(p -> {final PatientDTO pDTO = map(p); res.add(pDTO);});
 		return res;

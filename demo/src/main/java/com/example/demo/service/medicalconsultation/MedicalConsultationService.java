@@ -10,7 +10,7 @@ public interface MedicalConsultationService {
 	
 	MedicalConsultationDTO findById(Integer id) throws NotFoundExcept;
 
-	List<MedicalConsultationDTO> findAll();
+	List<MedicalConsultationDTO> findAll(Integer page, Integer size);
 
 	MedicalConsultationDTO create(MedicalConsultationDTO medicalConsultationDTO);
 

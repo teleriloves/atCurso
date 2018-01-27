@@ -30,7 +30,5 @@ public class AppointmentDTO {
 	public void setSworder(Integer order) {
 		this.sworder = order;
 	}
-	
-	
 
 }

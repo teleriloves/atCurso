@@ -12,7 +12,7 @@ public interface DoctorService {
 	
 	DoctorDTO findById(Integer id) throws NotFoundExcept;
 
-	List<DoctorDTO> findAll();
+	List<DoctorDTO> findAll(Integer page, Integer size);
 
 	DoctorDTO create(DoctorDTO doctorDTO);
 

@@ -10,7 +10,7 @@ public interface RoomService {
 	
 	RoomDTO findById(Integer id) throws NotFoundExcept;
 
-	List<RoomDTO> findAll();
+	List<RoomDTO> findAll(Integer page, Integer size);
 
 	RoomDTO create(RoomDTO roomDTO);
 

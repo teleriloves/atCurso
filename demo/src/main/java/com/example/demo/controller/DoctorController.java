@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,9 +29,9 @@ public class DoctorController {
     private RestTemplate restTemplate;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<DoctorDTO> retrieveAll()
+	public List<DoctorDTO> retrieveAll(@RequestParam(required=false) Integer page,  @RequestParam(required = false) Integer size)
 	{
-		return doctorService.findAll();
+		return doctorService.findAll(page, size);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.configuration;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.context.annotation.Bean;

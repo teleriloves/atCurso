@@ -15,7 +15,7 @@ public interface PatientService {
 	
 	PatientDTO findById(Integer id) throws NotFoundExcept;
 
-	List<PatientDTO> findAll();
+	List<PatientDTO> findAll(Integer page, Integer size);
 
 	PatientDTO create(PatientDTO patientDTO);
 

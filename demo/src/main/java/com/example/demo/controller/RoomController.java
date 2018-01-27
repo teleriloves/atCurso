@@ -23,9 +23,9 @@ public class RoomController {
 	private RoomService roomService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<RoomDTO> retrieveAll()
+	public List<RoomDTO> retrieveAll(@RequestParam(required=false) Integer page,  @RequestParam(required = false) Integer size)
 	{
-		return roomService.findAll();
+		return roomService.findAll(page, size);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

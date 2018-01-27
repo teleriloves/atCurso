@@ -8,6 +8,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.RoomDao;
 import com.example.demo.dto.RoomDTO;
 import com.example.demo.exceptions.NotFoundExcept;
@@ -30,8 +31,8 @@ public class RoomServiceImpl implements RoomService {
 	}
 
 	@Override
-	public List<RoomDTO> findAll() {
-		final Iterable<Room> findAll = roomDao.findAll();
+	public List<RoomDTO> findAll(Integer page, Integer size) {
+		final Iterable<Room> findAll = roomDao.findAll(PageReqConfig.newPageRequest(page, size));
 		final List<RoomDTO> res = new ArrayList<>();
 		findAll.forEach(r -> {final RoomDTO rDTO = map(r); res.add(rDTO);});
 		return res;

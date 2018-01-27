@@ -12,7 +12,7 @@ public interface AppointmentService {
 	
 	AppointmentDTO findById(Integer id) throws NotFoundExcept;
 
-	List<AppointmentDTO> findAll();
+	List<AppointmentDTO> findAll(Integer page, Integer size);
 
 	AppointmentDTO create(AppointmentDTO appointmentDTO);
 

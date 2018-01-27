@@ -60,4 +60,10 @@ public class Room {
 		this.clinic = clinic;
 	}
 	
+	public String toString()
+	{
+		return "" +id;
+	}
+	
+	
 }

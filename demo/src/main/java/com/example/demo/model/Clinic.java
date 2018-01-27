@@ -43,5 +43,10 @@ public class Clinic {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "clinic")
 	private List<Room> rooms = new ArrayList<Room>();
 	
+	public String toString()
+	{
+		return "" +id;
+	}
+	
 	
 }

@@ -90,6 +90,10 @@ public class MedicalConsultation {
 		this.docswitch = docswitch;
 	}
 	
+	public String toString()
+	{
+		return "" +id;
+	}
 	
 	
 	

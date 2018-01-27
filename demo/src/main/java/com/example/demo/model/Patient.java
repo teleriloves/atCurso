@@ -65,6 +65,10 @@ public class Patient {
 		this.appointments = appointments;
 	}
 	
+	public String toString()
+	{
+		return "" +id;
+	}
 	
 	
 }

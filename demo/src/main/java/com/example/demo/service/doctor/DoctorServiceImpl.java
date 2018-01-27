@@ -39,7 +39,6 @@ public class DoctorServiceImpl implements DoctorService {
 		return map(d);
 	}
 	
-	//meter el tamaño de pagina y tamaño en general
 	@Override
 	public List<DoctorDTO> findAll() {
 		final Iterable<Doctor> findAll = doctorDao.findAll();
@@ -68,16 +67,15 @@ public class DoctorServiceImpl implements DoctorService {
 
 	@Override
 	public Doctor map(DoctorDTO doctor) {
-		return Optional.ofNullable(doctorDao.findOne(doctor.getId())).orElse(new Doctor(null, null, doctor.getName(), doctor.getDni(), new ArrayList<>()));
+		Doctor d =  Optional.ofNullable(doctorDao.findOne(doctor.getId())).orElse(new Doctor());
+		d.setDni(doctor.getDni());
+		d.setName(doctor.getName());
+		return d;
 	}
 
 	@Override
 	public DoctorDTO map(Doctor doctor) {
-		//return dozer.map(doctor, DoctorDTO.class);
-		DoctorDTO d = new DoctorDTO();
-		d.setId(d.getId());
-		d.setDni(d.getDni());
-		
+		return dozer.map(doctor, DoctorDTO.class);	
 	}
 
 	@Override

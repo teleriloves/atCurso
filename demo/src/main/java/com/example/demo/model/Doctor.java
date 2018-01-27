@@ -29,8 +29,6 @@ public class Doctor {
 	
 	private String dni;
 
-
-	
 	public String getDni() {
 		return dni;
 	}
@@ -73,6 +71,11 @@ public class Doctor {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
 	private List<MedicalConsultation> consultations = new ArrayList<MedicalConsultation>();
+	
+	public String toString()
+	{
+		return "" +id;
+	}
 	
 	
 }

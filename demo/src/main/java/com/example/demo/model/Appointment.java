@@ -55,5 +55,9 @@ public class Appointment {
 		this.sworder = order;
 	}
 	
+	public String toString()
+	{
+		return "" +id;
+	}
 	
 }

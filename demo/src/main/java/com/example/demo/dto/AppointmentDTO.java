@@ -12,6 +12,8 @@ public class AppointmentDTO {
 	private Integer id;
 	
 	private Integer sworder;
+	
+	private String patient;
 
 	public Integer getId() {
 		return id;

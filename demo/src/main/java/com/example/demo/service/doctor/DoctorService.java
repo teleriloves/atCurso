@@ -1,5 +1,6 @@
 package com.example.demo.service.doctor;
 
+import java.text.ParseException;
 import java.util.List;
 
 import com.example.demo.dto.AppointmentDTO;
@@ -32,7 +33,7 @@ public interface DoctorService {
 	
 	public List<DoctorDTO> getDoctorsWithMorePatients(Integer amountOfDoctorsToFind);
 	
-	public Double getDoctorStats(Integer internalId, String initDate, String endDate) throws NotFoundExcept;
+	public Double getDoctorStats(Integer internalId, String initDate, String endDate) throws NotFoundExcept, ParseException;
 	
 	
 

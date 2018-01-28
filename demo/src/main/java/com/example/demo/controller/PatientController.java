@@ -25,9 +25,6 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 	
-	@Autowired
-	private AppointmentService appointmentService;
-	
 //	
 //	@RequestMapping(method = RequestMethod.GET, value = "/{id}/appointment")
 //	public List<AppointmentDTO> retrieveAppointment(@PathVariable("id") Integer id)
@@ -60,10 +57,15 @@ public class PatientController {
 		patientService.update(patient);
 	}
 
-	@RequestMapping(value = "/{id}", method = { RequestMethod.DELETE })
+	@RequestMapping(value = "/{id}/", method = { RequestMethod.DELETE })
 	public void delete(@PathVariable("id") Integer id) 
 	{
 		patientService.delete(id);
 	}
 	
+	@RequestMapping(value = "/{id}/appointment", method = RequestMethod.GET)
+	public List<AppointmentDTO> findPatientAppointments(Integer id)
+	{
+		return patientService.findPatientAppointments(id);
+	}
 }

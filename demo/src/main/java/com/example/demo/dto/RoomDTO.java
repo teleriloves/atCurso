@@ -2,11 +2,25 @@ package com.example.demo.dto;
 
 import javax.persistence.Column;
 
+import com.example.demo.model.Clinic;
+
 public class RoomDTO {
 	
 	private Integer id;
 
 	private Integer roomNumber;
+	
+	private Clinic clinic; 
+
+
+
+	public Clinic getClinic() {
+		return clinic;
+	}
+
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
+	}
 
 	public Integer getId() {
 		return id;
@@ -24,4 +38,5 @@ public class RoomDTO {
 		this.roomNumber = roomNumber;
 	}
 
+	
 }

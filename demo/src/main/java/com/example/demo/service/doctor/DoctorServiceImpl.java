@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.annotation.PostConstruct;
+
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -112,8 +114,7 @@ public class DoctorServiceImpl implements DoctorService {
 		
 	}
 	
-	
-	
+	@PostConstruct
 	public void retrieveDoctorsFromExternalApp()
 	{
 		DoctorDTO[] listDocs;
@@ -137,9 +138,8 @@ public class DoctorServiceImpl implements DoctorService {
 	}
 	
 	
-	public Double getDoctorStats(Integer internalId, String initDate, String endDate) throws NotFoundExcept
+	public Double getDoctorStats(Integer internalId, String initDate, String endDate) throws NotFoundExcept, ParseException
 	{
-		
 		Doctor doctor = doctorDao.findOne(internalId);
 		Double doctorPrice = getDoctorPrice(doctor.getId());
 		
@@ -147,17 +147,14 @@ public class DoctorServiceImpl implements DoctorService {
 		
 	}
 	
-	private Integer doctorAmountOfMedicalConsultations(Doctor doctor, String initDate, String endDate) 
+	private Integer doctorAmountOfMedicalConsultations(Doctor doctor, String initDate, String endDate) throws ParseException 
 	{
 		List<MedicalConsultation> mcList = doctor.getConsultations();
-		
-		AtomicInteger amountOfConsultations = new AtomicInteger(0);
-		mcList.forEach(mc -> {try {
-			if(dateInRange(mc.getFecha(), initDate, endDate)) amountOfConsultations.addAndGet(1);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}});
-		return amountOfConsultations.get();
+		Integer amountOfConsultations = 0;
+		for (MedicalConsultation medicalConsultation : mcList){
+			if(dateInRange(medicalConsultation.getFecha(), initDate, endDate)) ++amountOfConsultations;
+		}
+		return amountOfConsultations;
 	}
 	
 	public boolean dateInRange(String date, String init, String end) throws ParseException
@@ -171,6 +168,9 @@ public class DoctorServiceImpl implements DoctorService {
 		PriceDTO priceDTO = restTemplate.getForObject("http://doctor.dbgjerez.es:8080/api/doctor/"+id, PriceDTO.class);
 		return priceDTO.getPrice();
 	}
+	
+	
+	
 	
 	
 	

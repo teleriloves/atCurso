@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
-import com.example.demo.dto.UserDTO;
+
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Patient;
 

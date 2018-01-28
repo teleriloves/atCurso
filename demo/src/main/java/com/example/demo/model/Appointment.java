@@ -35,6 +35,14 @@ public class Appointment {
 		return patient;
 	}
 
+	public Integer getSworder() {
+		return sworder;
+	}
+
+	public void setSworder(Integer sworder) {
+		this.sworder = sworder;
+	}
+
 	public void setPatient(Patient patient) {
 		this.patient = patient;
 	}

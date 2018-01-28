@@ -13,7 +13,7 @@ public class AppointmentDTO {
 	
 	private Integer sworder;
 	
-	private String patient;
+	private Patient patient;
 
 	public Integer getId() {
 		return id;
@@ -29,6 +29,14 @@ public class AppointmentDTO {
 
 	public void setSworder(Integer order) {
 		this.sworder = order;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 }

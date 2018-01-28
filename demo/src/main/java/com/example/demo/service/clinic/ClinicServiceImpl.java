@@ -15,6 +15,7 @@ import com.example.demo.dto.DoctorDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.dto.RoomDTO;
 import com.example.demo.exceptions.NotFoundExcept;
+import com.example.demo.model.Appointment;
 import com.example.demo.model.Clinic;
 import com.example.demo.model.Clinic;
 import com.example.demo.model.Patient;
@@ -26,6 +27,8 @@ import com.example.demo.service.room.RoomService;
 
 @Service
 public class ClinicServiceImpl implements ClinicService{
+	
+	static Integer NotANullId = -1;
 
 	@Autowired
 	private ClinicDao clinicDao;
@@ -80,11 +83,10 @@ public class ClinicServiceImpl implements ClinicService{
 
 	@Override
 	public Clinic map(ClinicDTO clinic) {
-//		Clinic c = new Clinic();
-//		if(c == null) c = new Clinic();
-//		c.setRooms(c.getRooms());
-//		return c;
-		return dozer.map(clinic, Clinic.class);
+		Clinic c =  Optional.ofNullable(clinicDao.findOne(Optional.ofNullable(clinic.getId()).orElse(NotANullId))).orElse(new Clinic());
+		c.setId(clinic.getId());	
+		c.setName(clinic.getName());
+		return c;
 	}
 
 	@Override

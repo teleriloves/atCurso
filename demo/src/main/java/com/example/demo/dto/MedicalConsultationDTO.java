@@ -13,12 +13,38 @@ import javax.persistence.TemporalType;
 
 import com.example.demo.model.Appointment;
 import com.example.demo.model.Doctor;
+import com.example.demo.model.Patient;
 import com.example.demo.model.Room;
 
 public class MedicalConsultationDTO {
 	
 	private Integer id;
 	
+	private String fecha;
+
+	private Room room;
+	
+	private Doctor doctor;
+
+	
+	
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -35,6 +61,5 @@ public class MedicalConsultationDTO {
 		this.fecha = fecha;
 	}
 
-	private String fecha;
 
 }

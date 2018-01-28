@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,23 +60,16 @@ public class DoctorController {
 		doctorService.delete(id);
 	}
 
-	@RequestMapping(value = "/dbg", method = {RequestMethod.GET})
-	public void retrieveDoctorsFromExternalApp()
-	{
-		doctorService.retrieveDoctorsFromExternalApp();
-		
-	}
-	
 	@RequestMapping(value = "/{id}/stats", method = RequestMethod.GET)
-	public void retrieveDoctorStats(@PathVariable("id") Integer id, @RequestParam String initDate, @RequestParam String endDate) throws NotFoundExcept
+	public Double retrieveDoctorStats(@PathVariable("id") Integer id, @RequestParam String initDate, @RequestParam String endDate) throws NotFoundExcept, ParseException
 	{
-		doctorService.getDoctorStats(id, initDate, endDate);
+		return doctorService.getDoctorStats(id, initDate, endDate);
 	}
 	
-	@RequestMapping(value = "/top/{amountOfDoctors}", method = { RequestMethod.GET })
-	public void getDoctorsWithMorePatients(@PathVariable("amountOfDoctors") Integer amount) 
+	@RequestMapping(value = "/rank/{amountOfDoctors}", method = { RequestMethod.GET })
+	public List<DoctorDTO> getDoctorsWithMorePatients(@PathVariable("amountOfDoctors") Integer amount) 
 	{
-		doctorService.getDoctorsWithMorePatients(amount);
+		return doctorService.getDoctorsWithMorePatients(amount);
 	}
 	
 	

@@ -13,6 +13,7 @@ import com.example.demo.dao.PatientDao;
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
+import com.example.demo.model.MedicalConsultation;
 import com.example.demo.model.Patient;
 import com.example.demo.service.appointment.AppointmentService;
 import com.example.demo.model.Patient;
@@ -20,6 +21,8 @@ import com.example.demo.model.Patient;
 @Service
 public class PatientServiceImpl implements PatientService {
 	
+	private static final Integer NotANullId = -1;
+
 	@Autowired
 	private PatientDao patientDao;
 	
@@ -62,7 +65,11 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public Patient map(PatientDTO patient) {
-		return dozer.map(patient, Patient.class);
+		Patient p =  Optional.ofNullable(patientDao.findOne(Optional.ofNullable(patient.getId()).orElse(NotANullId))).orElse(new Patient());
+		p.setId(patient.getId());
+		p.setName(patient.getName());
+		p.setDni(patient.getDni());
+		return p;
 	}
 
 	@Override

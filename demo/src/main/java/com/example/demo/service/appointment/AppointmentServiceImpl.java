@@ -15,10 +15,13 @@ import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.model.Appointment;
+import com.example.demo.model.Doctor;
 import com.example.demo.model.Appointment;
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
+	
+	static Integer NotANullId = -1;
 	
 	@Autowired
 	private AppointmentDao appointmentDao;
@@ -61,7 +64,11 @@ public class AppointmentServiceImpl implements AppointmentService {
 
 	@Override
 	public Appointment map(AppointmentDTO appointment) {
-		return dozer.map(appointment, Appointment.class);
+		Appointment a =  Optional.ofNullable(appointmentDao.findOne(Optional.ofNullable(appointment.getId()).orElse(NotANullId))).orElse(new Appointment());
+		a.setId(appointment.getId());
+		a.setPatient(appointment.getPatient());
+		a.setSworder(appointment.getSworder());
+		return a;
 	}
 
 	@Override

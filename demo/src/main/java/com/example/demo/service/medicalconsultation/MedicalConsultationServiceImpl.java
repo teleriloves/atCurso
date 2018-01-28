@@ -12,12 +12,15 @@ import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.MedicalConsultationDao;
 import com.example.demo.dto.MedicalConsultationDTO;
 import com.example.demo.exceptions.NotFoundExcept;
+import com.example.demo.model.Appointment;
 import com.example.demo.model.MedicalConsultation;
 import com.example.demo.model.MedicalConsultation;
 
 @Service
 public class MedicalConsultationServiceImpl implements MedicalConsultationService {
 	
+	private static final Integer NotANullId = -1;
+
 	@Autowired
 	private MedicalConsultationDao medicalConsultationDao;
 	
@@ -58,7 +61,12 @@ public class MedicalConsultationServiceImpl implements MedicalConsultationServic
 
 	@Override
 	public MedicalConsultation map(MedicalConsultationDTO medicalConsultation) {
-		return dozer.map(medicalConsultation, MedicalConsultation.class);
+		MedicalConsultation mc =  Optional.ofNullable(medicalConsultationDao.findOne(Optional.ofNullable(medicalConsultation.getId()).orElse(NotANullId))).orElse(new MedicalConsultation());
+		mc.setId(medicalConsultation.getId());
+		mc.setDoctor(medicalConsultation.getDoctor());
+		mc.setFecha(medicalConsultation.getFecha());
+		mc.setRoom(medicalConsultation.getRoom());
+		return mc;
 	}
 
 	@Override

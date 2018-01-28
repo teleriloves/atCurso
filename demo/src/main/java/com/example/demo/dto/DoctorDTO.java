@@ -2,17 +2,27 @@ package com.example.demo.dto;
 
 public class DoctorDTO {
 
-private Integer id;
-//	
+	private Integer internalId;
+	
+	private String id;
+
 	private String name;
 	
+	public Integer getInternalId() {
+		return internalId;
+	}
+
+	public void setInternalId(Integer internalId) {
+		this.internalId = internalId;
+	}
+
 	private String dni;	
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

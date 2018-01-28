@@ -28,5 +28,12 @@ public interface DoctorService {
 	
 	public List<AppointmentDTO> findDoctorAppointments(Integer idDoctor);
 	
+	public void retrieveDoctorsFromExternalApp();
+	
+	public List<DoctorDTO> getDoctorsWithMorePatients(Integer amountOfDoctorsToFind);
+	
+	public Double getDoctorStats(Integer internalId, String initDate, String endDate) throws NotFoundExcept;
+	
+	
 
 }

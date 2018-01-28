@@ -19,10 +19,10 @@ import lombok.NoArgsConstructor;
 public class Doctor {
 
 	
-	@GeneratedValue
-	private Integer idDoc;
-	
 	@Id
+	@GeneratedValue
+	private Integer internalId;
+	
 	private String id;
 	
 	private String name;
@@ -33,16 +33,22 @@ public class Doctor {
 		return dni;
 	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
+
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
+	private List<MedicalConsultation> consultations = new ArrayList<MedicalConsultation>();
+	
+	public String toString()
+	{
+		return "" +internalId;
 	}
 
-	public Integer getIdDoc() {
-		return idDoc;
+	public Integer getInternalId() {
+		return internalId;
 	}
 
-	public void setIdDoc(Integer id) {
-		this.idDoc = id;
+	public void setInternalId(Integer internalId) {
+		this.internalId = internalId;
 	}
 
 	public String getId() {
@@ -69,12 +75,8 @@ public class Doctor {
 		this.consultations = consultations;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "doctor")
-	private List<MedicalConsultation> consultations = new ArrayList<MedicalConsultation>();
-	
-	public String toString()
-	{
-		return "" +id;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	
 	

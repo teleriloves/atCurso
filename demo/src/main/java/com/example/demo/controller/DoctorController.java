@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,20 +59,24 @@ public class DoctorController {
 		doctorService.delete(id);
 	}
 
-	@RequestMapping(value = "/dbg", method = {RequestMethod .GET})
+	@RequestMapping(value = "/dbg", method = {RequestMethod.GET})
 	public void retrieveDoctorsFromExternalApp()
 	{
-		//DoctorDTO result = restTemplate.getForObject("http://doctor.dbgjerez.es:8080/api/doctor?page=" + i, DoctorDTO.class);
-		//List<DoctorDTO> result = restTemplate.postForEntity(url, request, responseType)
-		//List<DoctorDTO> resultList = Arrays.asList(restTemplate.getForObject("http://doctor.dbgjerez.es:8080/api/doctor?page=0", DoctorDTO[].class));
-		//resultList.forEach(o -> doctorService.create(o));
-		
-		DoctorDTO[] result = restTemplate.getForObject("http://doctor.dbgjerez.es:8080/api/doctor?page=0", DoctorDTO[].class);
-		for(int i = 0; i< result.length;++i) {
-			doctorService.create(result[i]);
-
-		}
+		doctorService.retrieveDoctorsFromExternalApp();
 		
 	}
+	
+	@RequestMapping(value = "/{id}/stats", method = RequestMethod.GET)
+	public void retrieveDoctorStats(@PathVariable("id") Integer id, @RequestParam String initDate, @RequestParam String endDate) throws NotFoundExcept
+	{
+		doctorService.getDoctorStats(id, initDate, endDate);
+	}
+	
+	@RequestMapping(value = "/top/{amountOfDoctors}", method = { RequestMethod.GET })
+	public void getDoctorsWithMorePatients(@PathVariable("amountOfDoctors") Integer amount) 
+	{
+		doctorService.getDoctorsWithMorePatients(amount);
+	}
+	
 	
 }

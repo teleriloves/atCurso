@@ -12,9 +12,9 @@ import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.RoomDao;
 import com.example.demo.dto.RoomDTO;
 import com.example.demo.exceptions.NotFoundExcept;
-import com.example.demo.model.Patient;
+
 import com.example.demo.model.Room;
-import com.example.demo.model.Room;
+
 
 @Service
 public class RoomServiceImpl implements RoomService {

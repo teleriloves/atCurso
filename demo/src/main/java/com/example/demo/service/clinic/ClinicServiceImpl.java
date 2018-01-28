@@ -8,20 +8,18 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.configuration.PageReqConfig;
+
 import com.example.demo.dao.ClinicDao;
 import com.example.demo.dto.ClinicDTO;
 import com.example.demo.dto.DoctorDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.dto.RoomDTO;
 import com.example.demo.exceptions.NotFoundExcept;
-import com.example.demo.model.Appointment;
+
 import com.example.demo.model.Clinic;
-import com.example.demo.model.Clinic;
-import com.example.demo.model.Patient;
-import com.example.demo.model.Room;
+
 import com.example.demo.service.doctor.DoctorService;
-import com.example.demo.service.medicalconsultation.MedicalConsultationService;
+
 import com.example.demo.service.patient.PatientService;
 import com.example.demo.service.room.RoomService;
 
@@ -39,8 +37,6 @@ public class ClinicServiceImpl implements ClinicService{
 	@Autowired
 	private PatientService patientService;
 	 
-	@Autowired
-	private MedicalConsultationService medicalConsultationService;
 	
 	@Autowired
 	private DoctorService doctorService;

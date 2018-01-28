@@ -2,8 +2,6 @@ package com.example.demo.service.patient;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
 

@@ -5,15 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collector;
+
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -29,9 +28,13 @@ import com.example.demo.model.Doctor;
 import com.example.demo.model.MedicalConsultation;
 import com.example.demo.service.appointment.AppointmentService;
 import com.example.demo.service.patient.PatientService;
-import com.example.demo.model.Doctor;
+
+import lombok.extern.java.Log;
+
+
 
 @Service
+@Log
 public class DoctorServiceImpl implements DoctorService {
 	
 	static Integer NotANullId = -1;
@@ -127,6 +130,7 @@ public class DoctorServiceImpl implements DoctorService {
 			}
 			++page;
 		}while(listDocs.length>0);
+		log.info("Recuperación de doctores de API externa.");
 	}
 	
 	public List<DoctorDTO> getDoctorsWithMorePatients(Integer amountOfDoctorsToFind)
@@ -142,9 +146,8 @@ public class DoctorServiceImpl implements DoctorService {
 	{
 		Doctor doctor = doctorDao.findOne(internalId);
 		Double doctorPrice = getDoctorPrice(doctor.getId());
-		
-		return doctorPrice*doctorAmountOfMedicalConsultations(doctor, initDate, endDate);
-		
+		log.info("Recuperadas estadísticas del doctor .");
+		return doctorPrice*doctorAmountOfMedicalConsultations(doctor, initDate, endDate);		
 	}
 	
 	private Integer doctorAmountOfMedicalConsultations(Doctor doctor, String initDate, String endDate) throws ParseException 

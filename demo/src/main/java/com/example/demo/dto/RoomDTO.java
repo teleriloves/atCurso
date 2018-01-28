@@ -1,7 +1,5 @@
 package com.example.demo.dto;
 
-import javax.persistence.Column;
-
 import com.example.demo.model.Clinic;
 
 public class RoomDTO {

@@ -13,10 +13,10 @@ import com.example.demo.dao.PatientDao;
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
-import com.example.demo.model.MedicalConsultation;
+
 import com.example.demo.model.Patient;
 import com.example.demo.service.appointment.AppointmentService;
-import com.example.demo.model.Patient;
+
 
 @Service
 public class PatientServiceImpl implements PatientService {

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.configuration.PageReqConfig;
 import com.example.demo.dao.AppointmentDao;
-import com.example.demo.dao.AppointmentDao;
+
 import com.example.demo.dto.AppointmentDTO;
 import com.example.demo.exceptions.NotFoundExcept;
-import com.example.demo.dto.AppointmentDTO;
+
 import com.example.demo.model.Appointment;
-import com.example.demo.model.Doctor;
-import com.example.demo.model.Appointment;
+
+
 
 @Service
 public class AppointmentServiceImpl implements AppointmentService {

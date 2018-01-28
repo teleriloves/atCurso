@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import org.springframework.context.annotation.Lazy;
-
 @Entity
 public class Film {
 	

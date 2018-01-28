@@ -3,7 +3,6 @@ package com.example.demo.service.appointment;
 import java.util.List;
 
 import com.example.demo.dto.AppointmentDTO;
-import com.example.demo.dto.PatientDTO;
 import com.example.demo.exceptions.NotFoundExcept;
 import com.example.demo.model.Appointment;
 

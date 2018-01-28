@@ -7,7 +7,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.example.demo.model.Patient;
-import com.example.demo.model.User;
 
 public interface PatientDao extends PagingAndSortingRepository<Patient, Integer>{
 		
